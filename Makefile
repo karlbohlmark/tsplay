@@ -31,11 +31,11 @@ OBJS=$(addprefix $(OBJPATH)/, $(addsuffix .o, $(basename $(SOURCE))))
 
 $(OBJPATH)/%.o : %.c
 	test -d $(dir $@) || mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
+	$(CC) $(INCLUDE) -o $@ -c $< $(CFLAGS) 
 
 $(TARGET): $(OBJS)
 	test -d $(dir $@) || mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) -o $@ $^ $(CFLAGS) 
 	@echo -e "\n<Tips> Build '$(TARGET)' success!\n"
 
 clean:
